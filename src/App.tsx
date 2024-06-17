@@ -37,7 +37,12 @@ function App() {
         </button>
       </div>
 
-      <NearbyUsersBot />
+      <div>NearbyUsersBot test</div>
+      <div className='card'>
+        NearbyUsersBot
+        <NearbyUsersBot />
+      </div>
+
     </>
   )
 }
