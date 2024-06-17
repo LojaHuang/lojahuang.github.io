@@ -20,7 +20,7 @@ const NearbyUsersBot2: React.FC = () => {
 
 
     function nearby() {
-        setText(`${text} nearby ${navigator.geolocation}`)
+        setText(`${text} nearby ${JSON.stringify(navigator.geolocation)}`)
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
                 fetchNearbyUsers(position.coords.latitude, position.coords.longitude);
@@ -54,7 +54,7 @@ const NearbyUsersBot2: React.FC = () => {
                 setUsers(fetchedUsers);
             }
         } catch (error) {
-            setText(`${text}error:${error}`)
+            setText(`${text}error:${JSON.stringify(error)}`)
             console.error('Error fetching nearby users:', error);
         } finally {
             setLoading(false);
