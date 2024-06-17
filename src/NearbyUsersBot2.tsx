@@ -33,7 +33,7 @@ const NearbyUsersBot2: React.FC = () => {
         try {
             setText(`${text}fetchNearbyUsers:${latitude} ${longitude}`)
             const response = await controller.send({
-                '@type': 'contacts.getLocated',
+                '@type': 'getContactsLocated',//'contacts.getLocated',
                 geo_point: {
                     '@type': 'location',
                     latitude,
