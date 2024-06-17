@@ -136,6 +136,7 @@ const NearbyUsersBot: React.FC = () => {
     return (
         <div>
             <h1>Nearby Users</h1>
+            <span>11{text}</span>
             {loading ? (
                 <p>Loading...</p>
             ) : (
@@ -148,7 +149,6 @@ const NearbyUsersBot: React.FC = () => {
                     ))}
                 </ul>
             )}
-            <span>{text}</span>
         </div>
     );
 };
