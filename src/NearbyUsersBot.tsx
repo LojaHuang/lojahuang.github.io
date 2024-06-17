@@ -18,6 +18,7 @@ const NearbyUsersBot: React.FC = () => {
     const [users, setUsers] = useState<User[]>([]);
     const [loading, setLoading] = useState(false);
     const [client, setClient] = useState<TdClient | null>(null);
+    const [text, setText] = useState("")
 
     useEffect(() => {
         // 初始化 tdweb 客户端
@@ -43,6 +44,7 @@ const NearbyUsersBot: React.FC = () => {
 
     const handleUpdate = (update: TdObject) => {
         console.log('Update from tdweb:', update);
+        setText(`${text}Update from tdweb:${update}`)
         switch (update['@type']) {
             case 'authorizationStateWaitTdlibParameters':
                 client?.send({
@@ -87,6 +89,7 @@ const NearbyUsersBot: React.FC = () => {
                 break;
             case 'authorizationStateReady':
                 // 用户成功登录后，获取地理位置
+                setText(`${text}authorizationStateReady:${navigator.geolocation}`)
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition((position) => {
                         fetchNearbyUsers(position.coords.latitude, position.coords.longitude);
@@ -101,6 +104,7 @@ const NearbyUsersBot: React.FC = () => {
     const fetchNearbyUsers = async (latitude: number, longitude: number) => {
         setLoading(true);
         try {
+            setText(`${text}fetchNearbyUsers:${latitude} ${longitude}`)
             const response = await client?.send({
                 '@type': 'getContactsLocated',
                 geo_point: {
@@ -144,6 +148,7 @@ const NearbyUsersBot: React.FC = () => {
                     ))}
                 </ul>
             )}
+            <span>{text}</span>
         </div>
     );
 };
