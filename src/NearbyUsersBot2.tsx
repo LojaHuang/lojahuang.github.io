@@ -1,6 +1,6 @@
 // src/NearbyUsersBot.tsx
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import controller from './Controllers/TdLibController';
 
 // 定义用户信息的类型
@@ -11,7 +11,18 @@ interface User {
     distance: number;
 }
 
-controller.init();
+
+useEffect(() => {
+    controller.init();
+    controller.on('update', this.onUpdate);
+
+    AppStore.on('clientUpdateAppInactive', this.onClientUpdateAppInactive);
+    AppStore.on('clientUpdateFocusWindow', this.onClientUpdateFocusWindow);
+    AppStore.on('clientUpdateTdLibDatabaseExists', this.onClientUpdateTdLibDatabaseExists);
+    AppStore.on('updateAuthorizationState', this.onUpdateAuthorizationState);
+    AppStore.on('updateFatalError', this.onUpdateFatalError);
+
+}, []);
 
 const NearbyUsersBot2: React.FC = () => {
     const [users, setUsers] = useState<User[]>([]);
