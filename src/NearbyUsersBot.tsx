@@ -11,6 +11,7 @@ interface User {
     distance: number;
 }
 
+
 const API_ID = '25515933';  // 在 Telegram 开发者平台获取
 const API_HASH = '51a5e148f0ed37a026dc2616ef50ae7f';  // 在 Telegram 开发者平台获取
 
@@ -25,10 +26,10 @@ const NearbyUsersBot: React.FC = () => {
         const tdClient = new TdClient({
             useDatabase: false,
             verbosityLevel: 1,
-            apiId: API_ID,
-            apiHash: API_HASH,
-            useSecretChats: false,
-            useTestDc: false,
+            // apiId: API_ID,
+            // apiHash: API_HASH,
+            // useSecretChats: false,
+            // useTestDc: false,
         });
         setClient(tdClient);
 

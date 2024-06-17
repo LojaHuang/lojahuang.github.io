@@ -16,15 +16,15 @@ declare module 'tdweb/dist/tdweb' {
         [key: string]: any;
     }
 
-    export type TdJsonClient = {
-        send: (query: TdObject) => Promise<any>;
-        onUpdate: (callback: (update: TdObject) => void) => void;
-        offUpdate: (callback: (update: TdObject) => void) => void;
-        destroy: () => void;
-    };
+    // export type TdJsonClient = {
+    //     send: (query: TdObject) => Promise<any>;
+    //     onUpdate: (callback: (update: TdObject) => void) => void;
+    //     offUpdate: (callback: (update: TdObject) => void) => void;
+    //     destroy: () => void;
+    // };
 
-    class TdClient implements TdJsonClient {
-        constructor(options: TdClientOptions);
+    class TdClient {
+        constructor(options: Object);
         send: (query: TdObject) => Promise<any>;
         onUpdate: (callback: (update: TdObject) => void) => void;
         offUpdate: (callback: (update: TdObject) => void) => void;
