@@ -40,7 +40,7 @@ function App() {
       <div>NearbyUsersBot test</div>
       <div className='card'>
         NearbyUsersBot
-        <NearbyUsersBot />
+        {/* <NearbyUsersBot /> */}
       </div>
 
     </>
