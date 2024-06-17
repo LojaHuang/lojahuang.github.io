@@ -1,6 +1,6 @@
 // src/NearbyUsersBot.tsx
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import controller from './Controllers/TdLibController';
 
 // 定义用户信息的类型
