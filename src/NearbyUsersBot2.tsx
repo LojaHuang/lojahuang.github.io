@@ -33,7 +33,7 @@ const NearbyUsersBot2: React.FC = () => {
         try {
             setText(`${text}fetchNearbyUsers:${latitude} ${longitude}`)
             const response = await controller.send({
-                '@type': 'getContactsLocated',
+                '@type': 'contacts.getLocated',
                 geo_point: {
                     '@type': 'location',
                     latitude,
@@ -54,6 +54,7 @@ const NearbyUsersBot2: React.FC = () => {
                 setUsers(fetchedUsers);
             }
         } catch (error) {
+            setText(`${text}error:${error}`)
             console.error('Error fetching nearby users:', error);
         } finally {
             setLoading(false);
