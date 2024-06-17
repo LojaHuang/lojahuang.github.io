@@ -30,15 +30,19 @@ const NearbyUsersBot2: React.FC = () => {
         setLoading(true);
         try {
             console.log(`fetchNearbyUsers:${latitude} ${longitude}`);
+            // const response = await controller.send({
+            //     '@type': 'contacts.getLocated',
+            //     geo_point: {
+            //         '@type': 'location',
+            //         latitude,
+            //         longitude,
+            //         accuracy_radius: 100,
+            //     }
+            // });
             const response = await controller.send({
-                '@type': 'contacts.getLocated',//'contacts.getLocated',
-                geo_point: {
-                    '@type': 'location',
-                    latitude,
-                    longitude,
-                    accuracy_radius: 100,
-                }
+                '@type': 'getContacts'
             });
+
             console.log('Nearby users response:', response);
 
             if (response && response['users']) {
