@@ -451,11 +451,6 @@
   dependencies:
     "@types/node" "*"
 
-"@types/tdweb@^1.4.5":
-  version "1.4.5"
-  resolved "https://registry.npmjs.org/@types/tdweb/-/tdweb-1.4.5.tgz"
-  integrity sha512-6rFeIo6iofNkNz6Jn2BR9BWtOcjEsDdhJeQ7oYPXg865vOOeI6etPE7x1B2KtU1CE/A04c5jL6CRKhd/ut22xA==
-
 "@types/yauzl@^2.9.1":
   version "2.10.3"
   resolved "https://registry.npmjs.org/@types/yauzl/-/yauzl-2.10.3.tgz"
