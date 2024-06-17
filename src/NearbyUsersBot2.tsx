@@ -16,11 +16,9 @@ controller.init();
 const NearbyUsersBot2: React.FC = () => {
     const [users, setUsers] = useState<User[]>([]);
     const [loading, setLoading] = useState(false);
-    const [text, setText] = useState("")
-
 
     function nearby() {
-        setText(`${text} nearby ${JSON.stringify(navigator.geolocation)}`)
+        console.log('nearby', navigator.geolocation);
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
                 fetchNearbyUsers(position.coords.latitude, position.coords.longitude);
@@ -31,9 +29,9 @@ const NearbyUsersBot2: React.FC = () => {
     const fetchNearbyUsers = async (latitude: number, longitude: number) => {
         setLoading(true);
         try {
-            setText(`${text}fetchNearbyUsers:${latitude} ${longitude}`)
+            console.log(`fetchNearbyUsers:${latitude} ${longitude}`);
             const response = await controller.send({
-                '@type': 'getContactsLocated',//'contacts.getLocated',
+                '@type': 'contacts.getLocated',//'contacts.getLocated',
                 geo_point: {
                     '@type': 'location',
                     latitude,
@@ -54,7 +52,6 @@ const NearbyUsersBot2: React.FC = () => {
                 setUsers(fetchedUsers);
             }
         } catch (error) {
-            setText(`${text}error:${JSON.stringify(error)}`)
             console.error('Error fetching nearby users:', error);
         } finally {
             setLoading(false);
@@ -64,7 +61,6 @@ const NearbyUsersBot2: React.FC = () => {
     return (
         <div>
             <h1 onClick={nearby}>Nearby Users</h1>
-            <span>11{text}</span>
             {loading ? (
                 <p>Loading...</p>
             ) : (
