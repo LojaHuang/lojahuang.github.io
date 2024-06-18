@@ -3,6 +3,7 @@
 import { Airgram } from '@airgram/web';
 import React from 'react';
 import { APP_HASH, APP_ID } from './Constants';
+import { Auth } from './airgram/Auth';
 
 const NearbyUsersBot5: React.FC = () => {
     const airgram = new Airgram({
@@ -11,20 +12,28 @@ const NearbyUsersBot5: React.FC = () => {
         apiHash: APP_HASH
     })
 
+    airgram.use(new Auth({
+        code: () => window.prompt('Please enter the secret code:') || '',
+        phoneNumber: () => window.prompt('Please enter your phone number:') || '',
+        password: () => window.prompt('Please enter your password:') || ''
+    }))
+
     // airgram.api.getCountries().then(res => {
     //     console.log(res);
     // }).catch(e => console.log(e))
 
-    airgram.api.searchChatsNearby({
-        location: {
-            _: 'location',
-            latitude: 37.7749,  // 示例的纬度，替换为实际的值
-            longitude: -122.4194,  // 示例的经度，替换为实际的值
-        }
-    }).then(res => {
-        console.log('searchChatsNearby');
-        console.log(res);
-    }).catch(e => console.log(e))
+    function nearby() {
+        airgram.api.searchChatsNearby({
+            location: {
+                _: 'location',
+                latitude: 37.7749,  // 示例的纬度，替换为实际的值
+                longitude: -122.4194,  // 示例的经度，替换为实际的值
+            }
+        }).then(res => {
+            console.log('searchChatsNearby');
+            console.log(res);
+        }).catch(e => console.log(e))
+    }
 
     // airgram.api.getUserFullInfo().then(res =>
     //     console.log(res)
@@ -52,7 +61,8 @@ const NearbyUsersBot5: React.FC = () => {
 
     return (
         <div>
-            <h1>Nearby Users</h1>
+            <h1 onClick={nearby}>Nearby Users</h1>
+
         </div>
     );
 };
