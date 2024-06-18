@@ -11,9 +11,13 @@ const NearbyUsersBot5: React.FC = () => {
         apiHash: APP_HASH
     })
 
-    airgram.api.getUserFullInfo().then(res =>
-        console.log(res)
-    ).catch(e => console.log(e))
+    airgram.api.getCountries().then(res => {
+        console.log(res);
+    }).catch(e => console.log(e))
+
+    // airgram.api.getUserFullInfo().then(res =>
+    //     console.log(res)
+    // ).catch(e => console.log(e))
 
     // const fetchNearbyUsers = async () => {
     //     if (!airgram) return;
