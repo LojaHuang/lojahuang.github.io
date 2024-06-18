@@ -11,7 +11,18 @@ const NearbyUsersBot5: React.FC = () => {
         apiHash: APP_HASH
     })
 
-    airgram.api.getCountries().then(res => {
+    // airgram.api.getCountries().then(res => {
+    //     console.log(res);
+    // }).catch(e => console.log(e))
+
+    airgram.api.searchChatsNearby({
+        location: {
+            _: 'location',
+            latitude: 37.7749,  // 示例的纬度，替换为实际的值
+            longitude: -122.4194,  // 示例的经度，替换为实际的值
+        }
+    }).then(res => {
+        console.log('searchChatsNearby');
         console.log(res);
     }).catch(e => console.log(e))
 
