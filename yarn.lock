@@ -2,6 +2,19 @@
 # yarn lockfile v1
 
 
+"@airgram/core@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@airgram/core/-/core-5.0.0.tgz#e47d2cdc5fcee7644a3f089ae21166cdbe973d3e"
+  integrity sha512-i5KtI5Wtwt+d5IYJTw0ChcLk7nMpDvL5uKUp+zfAdg0EeyvC+c4+fLrVm5cLxp5EBD9GsPoncaqviMReux5yMw==
+
+"@airgram/web@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@airgram/web/-/web-5.0.0.tgz#df9c994c352741516711bb235a68a703a6d64df5"
+  integrity sha512-dgtcLWVe+b7gIjSAm1aWFg2rKemIBqocIFB/QpijphLHMC3dlPtlf5GNfTJnKokCgzAPdZ2fTtcVOKg/PH0vvg==
+  dependencies:
+    "@airgram/core" "^5.0.0"
+    tdweb "~1.8.0"
+
 "@ampproject/remapping@^2.2.0":
   version "2.3.0"
   resolved "https://registry.npmjs.org/@ampproject/remapping/-/remapping-2.3.0.tgz"
@@ -1904,7 +1917,7 @@ supports-color@^7.1.0:
   dependencies:
     has-flag "^4.0.0"
 
-tdweb@^1.8.0:
+tdweb@^1.8.0, tdweb@~1.8.0:
   version "1.8.0"
   resolved "https://registry.npmjs.org/tdweb/-/tdweb-1.8.0.tgz"
   integrity sha512-FIu48oWAUK2pAh/mp8q/faZMcik8qwzmdxl+p6gbNhEfjF/lYadDEgFBXOv/Xp5er19nFrZayIMYz3QxWBLaYw==
