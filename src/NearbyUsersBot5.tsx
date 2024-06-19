@@ -3,20 +3,61 @@
 import { Airgram } from '@airgram/web';
 import React from 'react';
 import { APP_HASH, APP_ID } from './Constants';
-import { Auth } from './airgram/Auth';
 
 const NearbyUsersBot5: React.FC = () => {
-    const airgram = new Airgram({
-        useTestDc: true,
-        apiId: APP_ID,
-        apiHash: APP_HASH
-    })
+    const airgramConfig = {
+        id: APP_ID,
+        hash: APP_HASH,
+        server: 'https://api.telegram.org',
+        localStorageEnabled: true,
+        useTestDc: false,
+        databaseDirectory: 'tdlib',
+        filesDirectory: 'tdlib_files',
+        useFileDatabase: false,
+        useChatInfoDatabase: false,
+        useMessageDatabase: false,
+        useSecretChats: false,
+        systemLanguageCode: 'en',
+        deviceModel: 'Desktop',
+        systemVersion: '1.0',
+        applicationVersion: '1.0',
+        enableStorageOptimizer: true,
+        ignoreFileNames: true,
+    };
 
-    airgram.use(new Auth({
-        code: () => window.prompt('Please enter the secret code:') || '',
-        phoneNumber: () => window.prompt('Please enter your phone number:') || '',
-        password: () => window.prompt('Please enter your password:') || ''
-    }))
+    const airgram = new Airgram(airgramConfig);
+
+    // 处理授权状态
+    airgram.on('updateAuthorizationState', async (ctx) => {
+        const state = ctx.update.authorizationState._;
+        if (state === 'authorizationStateWaitTdlibParameters') {
+            await airgram.api.setTdlibParameters({
+                parameters: {
+                    _: 'tdlibParameters',
+                    apiId: APP_ID,
+                    apiHash: APP_HASH,
+                    useTestDc: false,
+                    systemLanguageCode: 'en',
+                    deviceModel: 'Desktop',
+                    systemVersion: '1.0',
+                    applicationVersion: '1.0',
+                    enableStorageOptimizer: true,
+                }
+            });
+        } else if (state === 'authorizationStateWaitEncryptionKey') {
+            await airgram.api.checkDatabaseEncryptionKey({ encryptionKey: '' });
+        } else if (state === 'authorizationStateWaitPhoneNumber') {
+            await airgram.api.setAuthenticationPhoneNumber({ phoneNumber: '+1234567890' }); // 使用你自己的测试电话号码
+        } else if (state === 'authorizationStateReady') {
+
+        }
+    });
+
+    // 监听其他重要的更新
+    airgram.on('updateOption', (ctx) => {
+        console.log('Option updated:', ctx.update);
+    });
+
 
     // airgram.api.getCountries().then(res => {
     //     console.log(res);
