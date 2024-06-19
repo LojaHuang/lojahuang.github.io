@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@airgram/constants@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@airgram/constants/-/constants-4.0.0.tgz#fe4a1168059dff1758cd6ea8cb5da83105d648a4"
+  integrity sha512-p3bRd1kNIpSBW0lzN4JWR5s0BFs1GHEzo8e+U7D1kvb3lfP5oxel5FyFgfu07a+sfYMRJjEYa5iNnsaioWYKEA==
+
 "@airgram/core@^5.0.0":
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/@airgram/core/-/core-5.0.0.tgz#e47d2cdc5fcee7644a3f089ae21166cdbe973d3e"
