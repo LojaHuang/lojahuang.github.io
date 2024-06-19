@@ -3,29 +3,22 @@
 import { Airgram } from '@airgram/web';
 import React from 'react';
 import { APP_HASH, APP_ID } from './Constants';
+import { Auth } from './airgram/Auth';
 
 const NearbyUsersBot5: React.FC = () => {
-    const airgramConfig = {
-        id: APP_ID,
-        hash: APP_HASH,
-        server: 'https://api.telegram.org',
-        localStorageEnabled: true,
-        useTestDc: false,
-        databaseDirectory: 'tdlib',
-        filesDirectory: 'tdlib_files',
-        useFileDatabase: false,
-        useChatInfoDatabase: false,
-        useMessageDatabase: false,
-        useSecretChats: false,
-        systemLanguageCode: 'en',
-        deviceModel: 'Desktop',
-        systemVersion: '1.0',
-        applicationVersion: '1.0',
-        enableStorageOptimizer: true,
-        ignoreFileNames: true,
-    };
+    const airgram = new Airgram({
+        useTestDc: true,
+        apiId: APP_ID,
+        apiHash: APP_HASH
+    })
 
-    const airgram = new Airgram(airgramConfig);
+    airgram.use(new Auth({
+        code: () => window.prompt('Please enter the secret code:') || '',
+        phoneNumber: () => window.prompt('Please enter your phone number:') || '',
+        password: () => window.prompt('Please enter your password:') || ''
+    }))
+
+
 
     // 处理授权状态
     airgram.on('updateAuthorizationState', async (ctx) => {
