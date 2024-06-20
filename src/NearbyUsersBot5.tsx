@@ -16,6 +16,7 @@ const NearbyUsersBot5: React.FC = () => {
     //     phoneNumber: () => window.prompt('Please enter your phone number:') || '',
     //     password: () => window.prompt('Please enter your password:') || ''
     // }))
+    console.error('loja test NearbyUsersBot5');
 
 
 
