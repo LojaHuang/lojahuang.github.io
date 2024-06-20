@@ -5,6 +5,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 import WebApp from '@twa-dev/sdk'
+import Test from './Test'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -31,9 +32,10 @@ function App() {
       {/*  */}
       <div className="card">
         <button onClick={() => WebApp.showAlert(`Hello World! Current count is ${count}`)}>
-            Show Alert
+          Show Alert
         </button>
       </div>
+      <Test />
     </>
   )
 }
