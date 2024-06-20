@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
+import twaLogo from './assets/tapps.png'
 import viteLogo from '/vite.svg'
 import './App.css'
+
 import WebApp from '@twa-dev/sdk'
-import NearbyUsersBot2 from './NearbyUsersBot2'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -11,6 +12,9 @@ function App() {
   return (
     <>
       <div>
+        <a href="https://ton.org/dev" target="_blank">
+          <img src={twaLogo} className="logo" alt="TWA logo" />
+        </a>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -18,29 +22,18 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React2</h1>
+      <h1>TWA + Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-      {/* Here we add our button with alert callback */}
+      {/*  */}
       <div className="card">
         <button onClick={() => WebApp.showAlert(`Hello World! Current count is ${count}`)}>
-          Show Alert
+            Show Alert
         </button>
       </div>
-
-      <div className='card'>
-        <NearbyUsersBot2 />
-      </div>
-
     </>
   )
 }
