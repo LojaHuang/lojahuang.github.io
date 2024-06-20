@@ -16,12 +16,24 @@ controller.init();
 const NearbyUsersBot2: React.FC = () => {
     const [users, setUsers] = useState<User[]>([]);
     const [loading, setLoading] = useState(false);
+    const [text, setText] = useState('')
 
     function nearby() {
         console.log('nearby', navigator.geolocation);
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
                 fetchNearbyUsers(position.coords.latitude, position.coords.longitude);
+            });
+        }
+    }
+
+    function currentPosition() {
+        console.log('currentPosition', navigator.geolocation);
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                console.log("current position1", position);
+
+                setText(JSON.stringify(position))
             });
         }
     }
@@ -65,6 +77,7 @@ const NearbyUsersBot2: React.FC = () => {
     return (
         <div>
             <h1 onClick={nearby}>Nearby Users</h1>
+            <h1 onClick={currentPosition}>Current Position</h1>
             {loading ? (
                 <p>Loading...</p>
             ) : (
@@ -77,6 +90,7 @@ const NearbyUsersBot2: React.FC = () => {
                     ))}
                 </ul>
             )}
+            <span>{text}</span>
         </div>
     );
 };

@@ -3,7 +3,6 @@
 import { Airgram } from '@airgram/web';
 import React from 'react';
 import { APP_HASH, APP_ID } from './Constants';
-import { Auth } from './airgram/Auth';
 
 const NearbyUsersBot5: React.FC = () => {
     const airgram = new Airgram({
@@ -12,11 +11,11 @@ const NearbyUsersBot5: React.FC = () => {
         apiHash: APP_HASH
     })
 
-    airgram.use(new Auth({
-        code: () => window.prompt('Please enter the secret code:') || '',
-        phoneNumber: () => window.prompt('Please enter your phone number:') || '',
-        password: () => window.prompt('Please enter your password:') || ''
-    }))
+    // airgram.use(new Auth({
+    //     code: () => window.prompt('Please enter the secret code:') || '',
+    //     phoneNumber: () => window.prompt('Please enter your phone number:') || '',
+    //     password: () => window.prompt('Please enter your password:') || ''
+    // }))
 
 
 
@@ -49,6 +48,13 @@ const NearbyUsersBot5: React.FC = () => {
     // 监听其他重要的更新
     airgram.on('updateOption', (ctx) => {
         console.log('Option updated:', ctx.update);
+    });
+
+    // 监听新消息
+    airgram.on('updateNewMessage', (ctx) => {
+        const message = ctx.update.message;
+        console.log(message);
+        console.log(ctx);
     });
 
 

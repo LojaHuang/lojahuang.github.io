@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import WebApp from '@twa-dev/sdk'
-import NearbyUsersBot2 from './NearbyUsersBot2'
+import NearbyUsersBot5 from './NearbyUsersBot5'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -38,7 +38,7 @@ function App() {
       </div>
 
       <div className='card'>
-        <NearbyUsersBot2 />
+        <NearbyUsersBot5 />
       </div>
 
     </>
