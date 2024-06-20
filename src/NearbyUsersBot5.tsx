@@ -17,6 +17,8 @@ const NearbyUsersBot5: React.FC = () => {
     //     password: () => window.prompt('Please enter your password:') || ''
     // }))
     console.error('loja test NearbyUsersBot5');
+    console.error(airgram);
+
 
 
 
@@ -55,6 +57,19 @@ const NearbyUsersBot5: React.FC = () => {
     airgram.on('updateNewMessage', (ctx) => {
         const message = ctx.update.message;
         console.error(message);
+        console.error(ctx);
+    });
+
+    // 监听聊天更新
+    airgram.on('updateChat', (ctx) => {
+        console.error('updateChat');
+        console.error(ctx);
+
+    });
+
+    // 监听所有事件
+    airgram.on('update', (ctx) => {
+        console.error('on update');
         console.error(ctx);
     });
 
