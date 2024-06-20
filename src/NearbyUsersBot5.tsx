@@ -53,8 +53,8 @@ const NearbyUsersBot5: React.FC = () => {
     // 监听新消息
     airgram.on('updateNewMessage', (ctx) => {
         const message = ctx.update.message;
-        console.log(message);
-        console.log(ctx);
+        console.error(message);
+        console.error(ctx);
     });
 
 
