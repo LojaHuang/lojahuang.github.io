@@ -4,14 +4,14 @@ import WebApp from '@twa-dev/sdk'
 
 function Test() {
 
-    console.error(WebApp);
+    console.log(WebApp);
+    console.log(WebApp.initDataUnsafe);
+
 
 
     return (
         <>
             <h1>Test</h1>
-            <span>{WebApp.initData}</span>
-            <span>{JSON.stringify(WebApp.initDataUnsafe)}</span>
         </>
     )
 }
